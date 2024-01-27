@@ -44,9 +44,6 @@ def evaluate(event):
       except:
             showerror('Ошибка', "Неверное выражение или интервал [a,b].")
             
-#except:  # реакция на любую ошибку
-     #showerror('Ошибка', "Неверное выражение или интервал [a,b].")
-
 
 def evaluate2(event):  # чтобы кнопка отжималась при ошибке
     root.after(100, evaluate, event)
@@ -55,14 +52,11 @@ root = Tk()
 root.title("График функции")
 root.geometry('520x473+300+100')
 warnings.filterwarnings("error")
-#frameUp = Frame(root, relief=SUNKEN, height=64)
-#frameUp.grid(side=TOP, fill=X)
 Label(root, text="Выражение: ").grid(row=1,column=0,stick='wens')
 Label(root, text="Начало интервала x:").grid(row=1,column=1,stick='wens')
 Label(root, text="Конец интервала x:").grid(row=1,column=2,stick='wens')
 Label(root, text="Шаг:").grid(row=1,column=3,stick='wens')
 entry = Entry(root, relief=RIDGE, borderwidth=4)
-#entry.bind("<Return>", evaluate)
 entry.grid(row=2,column=0,stick='wens')
 strA = StringVar()
 strA.set(0)
@@ -77,11 +71,9 @@ strC = StringVar()
 strC.set('auto')
 entryC = Entry(root, relief=RIDGE, borderwidth=4, textvariable=strC)
 entryC.grid(row=2,column=3,stick='wens')
-#entryB.bind("<Return>", evaluate)
 btn = Button(root, text='Создать')
 btn.bind("<Button-1>", evaluate2)
 btn.grid(row=3,column=0,stick='wens')
-#root.bind('<Esc>', lambda event: root.destroy())
 fig = Figure(figsize=(5, 4), dpi=100, facecolor='white')
 ax = fig.add_subplot(111)
 canvasAgg = FigureCanvasTkAgg(fig, master=root)
